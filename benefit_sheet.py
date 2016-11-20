@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import xlrd
-from subject import *
 
 
-class BalanceSheet:
+class BenefitSheet:
 	__sheet_data = None
 	
 	def __init__(self, file_name, subjects):
