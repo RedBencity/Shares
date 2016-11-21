@@ -37,7 +37,7 @@ class SharesAnalysis:
 		row = len(self.subjects)
 		for x in range(len(self.rates)):
 			rate = self.rates[x]
-			if x < row:
+			if x < row - 1:
 				self.sheet.write(0, 2 * x + 2, rate.name.decode('utf-8'))
 				for y in range(0, len(rate.datas)):
 					self.sheet.write(y + 1, 2 * x + 2, rate.datas[y], style)

@@ -30,7 +30,6 @@ class OneRate(Rate):
 				self.datas.append(data)
 			else:
 				self.datas.append(0)
-		print self.datas
 
 
 class TwoRate(Rate):
@@ -41,8 +40,6 @@ class TwoRate(Rate):
 	def calculate(self):
 		first_original_datas = self.subjects_list[0].datas
 		second_original_datas = self.subjects_list[1].datas
-		print first_original_datas
-		print second_original_datas
 		for i in range(max(len(first_original_datas), len(second_original_datas))):
 			data = second_original_datas[i] / first_original_datas[i]
 			data = round(data, 2)
