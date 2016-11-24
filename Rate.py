@@ -41,6 +41,6 @@ class TwoRate(Rate):
 		first_original_datas = self.subjects_list[0].datas
 		second_original_datas = self.subjects_list[1].datas
 		for i in range(max(len(first_original_datas), len(second_original_datas))):
-			data = second_original_datas[i] / first_original_datas[i]
-			data = round(data, 2)
+			data = first_original_datas[i] / second_original_datas[i]
+			data = round(data, 4)
 			self.datas.append(data)
