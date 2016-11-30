@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from subject import *
-from Rate import *
+from rate import *
 from shares_analysis import SharesAnalysis
 from finance_sheet import *
+from  date import *
 
 print "hello,world!"
 
@@ -10,8 +11,8 @@ print "hello,world!"
 balance_sheet_name = 'debtyear.xls'
 benefit_sheet_name = 'benefityear.xls'
 cash_sheet_name = 'cashyear.xls'
-time_range = (2015, 1991)
-subjects_name = ["科目\时间", "资产总计", "归属于母公司股东权益合计", "营业总收入", "净利润", "扣非净利润","经营现金流量净额"]
+time_range = Date(2015, 2006)
+subjects_name = ["科目\时间", "资产总计", "归属于母公司股东权益合计", "营业总收入", "净利润", "扣非净利润", "经营现金流量净额"]
 subjects = list()
 subjects.append(DateSubject("科目\时间"))
 for i in range(1, len(subjects_name)):

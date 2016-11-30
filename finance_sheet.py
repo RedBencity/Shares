@@ -19,30 +19,17 @@ class FinanceSheet(object):
 		print "begin parse sheet !"
 		table = self.__sheet_data.sheets()[0]
 		
-		time_begin_position = -1
-		time_end_position = -1
-		self.subjects[0].datas = []
-		for i in range(1, table.ncols):
-			time = repr(table.row_values(0)[i])
-			if time.find(str(self.time_range[0])) != -1 and time_begin_position == -1:
-				time_begin_position = i
-			if time.find(str(self.time_range[1])) != -1:
-				time_end_position = i
-			self.subjects[0].datas.append(table.row_values(0)[i])
+		self.subjects[0].datas = table.row_values(0)
 		self.subjects[0].convert_unit()
 		
-		if time_begin_position == -1:
-			time_begin_position = 1
-		if time_end_position == -1:
-			time_end_position = table.ncols
-		
+		self.subjects[0].datas, begin_offset, sub_date_length = self.time_range.calculate(self.subjects[0].datas)
 		for i in range(1, table.nrows):
 			name = table.col_values(0)[i]
 			if isinstance(name, unicode):
 				name = name.encode('utf-8')
 			for j in range(1, len(self.subjects)):
 				if name == self.subjects[j].name:
-					self.subjects[j].datas = table.row_values(i)[time_begin_position:time_end_position + 1]
+					self.subjects[j].datas = table.row_values(i)[begin_offset:sub_date_length]
 					self.subjects[j].convert_unit()
 
 
